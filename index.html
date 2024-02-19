@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="loadscript.js"></script>
+</head>
+<body>
+<script>
+  loadScript('./script1.js', (error, script) => {
+    if (error) {
+      console.log('出现错误', error)
+    } else {
+      console.log('执行脚本1', script)
+      loadScript('./script2.js', (error, script) => {
+        if (error) {
+          console.log('出现错误', error)
+        } else {
+          console.log('执行脚本2', script)
+          loadScript('./script3.js', (error, script) => {
+            if (error) {
+              console.log('出现错误', error)
+            } else {
+              console.log('执行脚本3', script)
+            }
+          })
+        }
+      })
+    }
+  })
+</script>
+</body>
+</html>
